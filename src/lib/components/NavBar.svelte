@@ -13,6 +13,7 @@
     width: 100%;
     height: 65px;
     background: var(--accent);
+    box-shadow: var(--shadow-small);
   }
 
   div {
