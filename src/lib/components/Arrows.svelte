@@ -18,6 +18,7 @@
 
 <style>
   div {
+    margin-block: 1rem;
     width: 100%;
     max-width: 475px;
     padding-inline: 1rem;
