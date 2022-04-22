@@ -1,9 +1,21 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let type = "leftArrow";
   export let text = "";
+
+  function handleClick() {
+    dispatch("Click");
+  }
 </script>
 
-<button class:text={text != ""} class:accent={type === "rightArrowAccent"}>
+<button
+  class:text={text != ""}
+  class:accent={type === "rightArrowAccent"}
+  on:click={handleClick}
+>
   {#if type === "leftArrow"}
     <svg
       xmlns="http://www.w3.org/2000/svg"
