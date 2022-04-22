@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import { progress } from "$lib/stores";
+  import Splash from "$lib/components/Splash.svelte";
+
+  function stepForward() {
+    $progress[1] = $progress[1] + 1;
+  }
+  function stepBackward() {
+    $progress[1] = $progress[1] - 1;
+  }
+</script>
+
+{#if $progress[1] === 0}
+  <Splash on:Click={stepForward} />
+{/if}
