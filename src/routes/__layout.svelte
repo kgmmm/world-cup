@@ -18,5 +18,7 @@
     padding: 1rem;
     width: 100%;
     max-width: 475px;
+    display: grid;
+    place-items: center;
   }
 </style>
