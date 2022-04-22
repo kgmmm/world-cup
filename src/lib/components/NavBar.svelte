@@ -1,23 +1,23 @@
 <script>
-  export let title = "World Cup Predictor";
+  import { progress } from "$lib/stores";
 </script>
 
 <header>
   <div>
-    <h1>{title}</h1>
+    <h1>{$progress[0][$progress[1]]}</h1>
   </div>
 </header>
 
 <style>
   header {
     width: 100%;
-    height: 65px;
     background: var(--accent);
     box-shadow: var(--shadow-small);
   }
 
   div {
     margin: 0 auto;
+    padding: 0.5rem 1rem;
     width: 100%;
     max-width: 475px;
     height: 100%;
