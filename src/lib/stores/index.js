@@ -196,3 +196,34 @@ export const semiFinals = derived((quarterFinals), (quarterFinals) => {
 export const finalMatch = derived((semiFinals), (semiFinals) => {
   return [semiFinals[0][3], semiFinals[1][3]];
 });
+
+export const progress = writable([
+  [
+    "World Cup Predictor",
+    "groupA",
+    "groupB",
+    "groupC",
+    "groupD",
+    "groupE",
+    "groupF",
+    "groupG",
+    "groupH",
+    "roundSixteen[0]",
+    "roundSixteen[1]",
+    "roundSixteen[2]",
+    "roundSixteen[3]",
+    "roundSixteen[4]",
+    "roundSixteen[5]",
+    "roundSixteen[6]",
+    "roundSixteen[7]",
+    "quarterFinals[0]",
+    "quarterFinals[1]",
+    "quarterFinals[2]",
+    "quarterFinals[3]",
+    "semiFinals[0]",
+    "semiFinals[1]",
+    "finalMatch[0]",
+    "endscreen",
+  ],
+  0
+]);
