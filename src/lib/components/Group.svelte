@@ -1,8 +1,9 @@
 <script>
-  import { codeMap } from "$lib/stores";
+  import { get } from "svelte/store";
+  import { codeMap, progress, groups, matchWinners } from "$lib/stores";
   import { flip } from "svelte/animate";
 
-  export let teams;
+  $: teams = get(groups[$progress[1] - 1]);
 
   let hovering;
 
@@ -18,7 +19,24 @@
       newTracklist.splice(target, 0, newTracklist[start]);
       newTracklist.splice(start + 1, 1);
     }
-    teams = newTracklist;
+    groups[$progress[1] - 1].set(newTracklist);
+    matchWinners.set([
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ]);
     hovering = null;
   }
 
