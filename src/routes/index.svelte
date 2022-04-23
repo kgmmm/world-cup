@@ -27,6 +27,7 @@
 
 <style>
   p {
+    padding-inline: 1rem;
     justify-self: left;
     text-align: left;
   }
