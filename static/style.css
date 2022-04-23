@@ -47,9 +47,12 @@ ol[role='list'] {
   list-style: none;
 }
 
+html, body { 
+  min-height: 100%;
+}
+
 /* Set core body defaults */
 body {
-  min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   font-family: 'DM Sans', sans-serif;
