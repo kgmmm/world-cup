@@ -81,52 +81,52 @@ export const codeMap = derived(([teams, codes]), ([teams, codes]) => {
 });
 
 export const groupA = writable([
-  "Qatar",
-  "Ecuador",
-  "Senegal",
-  "Netherlands",
+  ["Qatar", 1],
+  ["Ecuador", 2],
+  ["Senegal", 3],
+  ["Netherlands", 4],
 ]);
 export const groupB = writable([
-  "England",
-  "Iran",
-  "USA",
-  "WAL/UKR/SCO",
+  ["England", 1],
+  ["Iran", 2],
+  ["USA", 3],
+  ["WAL/UKR/SCO", 4],
 ]);
 export const groupC = writable([
-  "Argentina",
-  "Saudi Arabia",
-  "Mexico",
-  "Poland",
+  ["Argentina", 1],
+  ["Saudi Arabia", 2],
+  ["Mexico", 3],
+  ["Poland", 4],
 ]);
 export const groupD = writable([
-  "France",
-  "AUS/UAE/PER",
-  "Denmark",
-  "Tunisia",
+  ["France", 1],
+  ["AUS/UAE/PER", 2],
+  ["Denmark", 3],
+  ["Tunisia", 4],
 ]);
 export const groupE = writable([
-  "Spain",
-  "CRC/NZ",
-  "Germany",
-  "Japan",
+  ["Spain", 1],
+  ["CRC/NZ", 2],
+  ["Germany", 3],
+  ["Japan", 4],
 ]);
 export const groupF = writable([
-  "Belgium",
-  "Canada",
-  "Morocco",
-  "Croatia",
+  ["Belgium", 1],
+  ["Canada", 2],
+  ["Morocco", 3],
+  ["Croatia", 4],
 ]);
 export const groupG = writable([
-  "Brazil",
-  "Serbia",
-  "Switzerland",
-  "Cameroon",
+  ["Brazil", 1],
+  ["Serbia", 2],
+  ["Switzerland", 3],
+  ["Cameroon", 4],
 ]);
 export const groupH = writable([
-  "Portugal",
-  "Ghana",
-  "Uruguay",
-  "South Korea",
+  ["Portugal", 1],
+  ["Ghana", 2],
+  ["Uruguay", 3],
+  ["South Korea", 4],
 ]);
 
 export const groups = [
@@ -153,14 +153,14 @@ export const matchWinners = writable([
 
 export const roundSixteen = derived(([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]), ([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]) => {
   return [
-    [groupA[0], groupB[1]],
-    [groupC[0], groupD[1]],
-    [groupD[0], groupC[1]],
-    [groupB[0], groupA[1]],
-    [groupE[0], groupF[1]],
-    [groupG[0], groupH[1]],
-    [groupF[0], groupE[1]],
-    [groupH[1], groupG[1]]
+    [groupA[0][0], groupB[1][0]],
+    [groupC[0][0], groupD[1][0]],
+    [groupD[0][0], groupC[1][0]],
+    [groupB[0][0], groupA[1][0]],
+    [groupE[0][0], groupF[1][0]],
+    [groupG[0][0], groupH[1][0]],
+    [groupF[0][0], groupE[1][0]],
+    [groupH[1][0], groupG[1][0]]
   ];
 });
 
