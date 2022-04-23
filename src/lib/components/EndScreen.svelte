@@ -35,6 +35,7 @@
 <style>
   img {
     margin: 3rem;
+    margin-top: 2rem;
   }
   h1 {
     margin-bottom: 4rem;
