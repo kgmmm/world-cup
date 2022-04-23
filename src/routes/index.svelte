@@ -3,6 +3,7 @@
   import Splash from "$lib/components/Splash.svelte";
   import Group from "$lib/components/Group.svelte";
   import Match from "$lib/components/Match.svelte";
+  import EndScreen from "$lib/components/EndScreen.svelte";
 
   function stepForward() {
     $progress[1] = $progress[1] + 1;
@@ -20,6 +21,8 @@
 {:else if $progress[1] > 8 && $progress[1] !== $progress[0].length - 1}
   <p>Select the team you think will win this match.</p>
   <Match />
+{:else if $progress[1] === $progress[0].length - 1}
+  <EndScreen />
 {/if}
 
 <style>
