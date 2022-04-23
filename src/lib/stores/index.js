@@ -179,22 +179,42 @@ export const roundSixteen = derived(([groupA, groupB, groupC, groupD, groupE, gr
 
 export const quarterFinals = derived((roundSixteen), (roundSixteen) => {
   return [
-    [roundSixteen[4][3], roundSixteen[5][3], "winner"],
-    [roundSixteen[0][3], roundSixteen[1][3], "winner"],
-    [roundSixteen[6][3], roundSixteen[7][3], "winner"],
-    [roundSixteen[2][3], roundSixteen[3][3], "winner"]
+    [roundSixteen[4][2], roundSixteen[5][2], "winner"],
+    [roundSixteen[0][2], roundSixteen[1][2], "winner"],
+    [roundSixteen[6][2], roundSixteen[7][2], "winner"],
+    [roundSixteen[2][2], roundSixteen[3][2], "winner"]
   ];
 });
 
 export const semiFinals = derived((quarterFinals), (quarterFinals) => {
   return [
-    [quarterFinals[1][3], quarterFinals[0][3], "winner"],
-    [quarterFinals[3][3], quarterFinals[2][3], "winner"]
+    [quarterFinals[1][2], quarterFinals[0][2], "winner"],
+    [quarterFinals[3][2], quarterFinals[2][2], "winner"]
   ];
 });
 
 export const finalMatch = derived((semiFinals), (semiFinals) => {
-  return [semiFinals[0][3], semiFinals[1][3]];
+  return [semiFinals[0][2], semiFinals[1][2]];
+});
+
+export const matches = derived(([roundSixteen, quarterFinals, semiFinals, finalMatch]), ([roundSixteen, quarterFinals, semiFinals, finalMatch]) => {
+  return {
+    "roundSixteen[0]": roundSixteen[0],
+    "roundSixteen[1]": roundSixteen[1],
+    "roundSixteen[2]": roundSixteen[2],
+    "roundSixteen[3]": roundSixteen[3],
+    "roundSixteen[4]": roundSixteen[4],
+    "roundSixteen[5]": roundSixteen[5],
+    "roundSixteen[6]": roundSixteen[6],
+    "roundSixteen[7]": roundSixteen[7],
+    "quarterFinals[0]": quarterFinals[0],
+    "quarterFinals[1]": quarterFinals[1],
+    "quarterFinals[2]": quarterFinals[2],
+    "quarterFinals[3]": quarterFinals[3],
+    "semiFinals[0]": semiFinals[0],
+    "semiFinals[1]": semiFinals[1],
+    "finalMatch[0]": finalMatch[0]
+  }
 });
 
 export const progress = writable([
