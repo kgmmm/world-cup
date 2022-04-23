@@ -1,5 +1,5 @@
 <script>
-  import { codeMap, matchWinners } from "$lib/stores";
+  import { codeMap, matchWinners, progress } from "$lib/stores";
   import Button from "./Button.svelte";
   import IconButton from "./IconButton.svelte";
 
@@ -30,7 +30,7 @@
 <br />
 <IconButton text="Share your prediction" type="share" accent={true} />
 <br />
-<IconButton type="restart" />
+<IconButton type="restart" on:Click={() => ($progress[1] = 0)} />
 
 <style>
   img {
