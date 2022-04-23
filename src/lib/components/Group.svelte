@@ -50,7 +50,7 @@
 
 <ul>
   {#each teams as team, index (team)}
-    {@const code = $codeMap.get(team).toLowerCase()}
+    {@const code = $codeMap.get(team[0]).toLowerCase()}
     <li
       animate:flip={{ duration: 300 }}
       draggable={true}
@@ -68,7 +68,7 @@
             https://flagcdn.com/180x135/eu.png 3x`}
           width="60"
           height="45"
-          alt={team}
+          alt={team[0]}
         />
       {:else}
         <img
@@ -77,10 +77,10 @@
             https://flagcdn.com/180x135/${code}.png 3x`}
           width="60"
           height="45"
-          alt={team}
+          alt={team[0]}
         />
       {/if}
-      <p>{team}</p>
+      <p>{team[0]}</p>
     </li>
   {/each}
 </ul>
