@@ -1,5 +1,5 @@
 <script>
-  import { progress, matches } from "$lib/stores";
+  import { progress } from "$lib/stores";
   import Splash from "$lib/components/Splash.svelte";
   import Group from "$lib/components/Group.svelte";
   import Match from "$lib/components/Match.svelte";
@@ -19,7 +19,7 @@
   <Group />
 {:else if $progress[1] > 8 && $progress[1] !== $progress[0].length - 1}
   <p>Select the team you think will win this match.</p>
-  <Match teams={$matches[$progress[0][$progress[1]]]} />
+  <Match />
 {/if}
 
 <style>

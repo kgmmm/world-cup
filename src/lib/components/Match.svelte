@@ -1,7 +1,7 @@
 <script>
-  import { codeMap, progress, matchWinners } from "$lib/stores";
+  import { codeMap, progress, matches, matchWinners } from "$lib/stores";
 
-  export let teams;
+  $: teams = $matches[$progress[0][$progress[1]]];
 
   $: teamOneCode = $codeMap.get(teams[0]).toLowerCase();
   $: teamTwoCode = $codeMap.get(teams[1]).toLowerCase();
