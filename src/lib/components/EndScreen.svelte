@@ -29,13 +29,15 @@
 <Button text="See full prediction" />
 <br />
 <IconButton text="Share your prediction" type="share" accent={true} />
+<br />
+<IconButton type="restart" />
 
 <style>
   img {
     margin: 3rem;
   }
   h1 {
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     color: var(--color);
     font-size: 4rem;
     text-align: center;
