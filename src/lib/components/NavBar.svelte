@@ -1,10 +1,34 @@
 <script>
   import { progress } from "$lib/stores";
+
+  let title;
+
+  function makeTitle(position) {
+    let pos = position.substring(0, 3);
+    let gameNum =
+      Number(position.substring(position.length - 2, position.length - 1)) + 1;
+
+    if (pos === "gro") {
+      title = "Group " + position.substring(position.length - 1);
+    } else if (pos === "rou") {
+      title = "Round of Sixteen " + gameNum;
+    } else if (pos === "qua") {
+      title = "Quarter Final " + gameNum;
+    } else if (pos === "sem") {
+      title = "Semi Final " + gameNum;
+    } else if (pos === "fin") {
+      title = "Final";
+    } else {
+      title = position;
+    }
+  }
+
+  $: makeTitle($progress[0][$progress[1]]);
 </script>
 
 <header>
   <div>
-    <h1>{$progress[0][$progress[1]]}</h1>
+    <h1>{title}</h1>
   </div>
 </header>
 
