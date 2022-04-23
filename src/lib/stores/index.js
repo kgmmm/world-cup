@@ -230,7 +230,7 @@ export const progress = writable([
     "semiFinals[0]",
     "semiFinals[1]",
     "finalMatch[0]",
-    "endscreen",
+    "Your winner is...",
   ],
   0
 ]);
