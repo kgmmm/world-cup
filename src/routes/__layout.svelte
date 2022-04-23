@@ -18,7 +18,9 @@
     padding: 1rem;
     width: 100%;
     max-width: 475px;
+    min-height: 460px;
     display: grid;
     place-items: center;
+    grid-template-rows: auto 1fr auto;
   }
 </style>
