@@ -5,6 +5,7 @@
 
   export let type = "leftArrow";
   export let text = "";
+  export let disabled = false;
 
   function handleClick() {
     dispatch("Click");
@@ -15,6 +16,7 @@
   class:text={text != ""}
   class:accent={type === "rightArrowAccent"}
   on:click={handleClick}
+  {disabled}
 >
   {#if type === "leftArrow"}
     <svg
@@ -104,5 +106,10 @@
     background: var(--accent);
     color: var(--background);
     border: none;
+  }
+
+  button[disabled] {
+    opacity: 50%;
+    pointer-events: none;
   }
 </style>

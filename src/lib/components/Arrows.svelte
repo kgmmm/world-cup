@@ -1,5 +1,5 @@
 <script>
-  import { progress } from "$lib/stores";
+  import { progress, matches } from "$lib/stores";
   import IconButton from "./IconButton.svelte";
 
   function stepForward() {
@@ -12,7 +12,13 @@
 
 <div>
   <IconButton type="leftArrow" on:Click={stepBackward} />
-  <IconButton type="rightArrowAccent" on:Click={stepForward} />
+  <IconButton
+    type="rightArrowAccent"
+    on:Click={stepForward}
+    disabled={$progress[1] > 8 &&
+      $progress[1] !== $progress[0].length &&
+      $matches[$progress[0][$progress[1]]][2] === "winner"}
+  />
   <p>{$progress[1]}/{$progress[0].length - 2}</p>
 </div>
 
