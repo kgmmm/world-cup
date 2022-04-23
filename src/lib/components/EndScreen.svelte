@@ -38,7 +38,7 @@
     margin-top: 2rem;
   }
   h1 {
-    margin-bottom: 4rem;
+    margin-bottom: 3.5rem;
     color: var(--color);
     font-size: 4rem;
     text-align: center;
