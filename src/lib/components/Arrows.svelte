@@ -13,7 +13,8 @@
 <div>
   <IconButton type="leftArrow" on:Click={stepBackward} />
   <IconButton
-    type="rightArrowAccent"
+    type="rightArrow"
+    accent={true}
     on:Click={stepForward}
     disabled={$progress[1] > 8 &&
       $progress[1] !== $progress[0].length &&
