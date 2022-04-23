@@ -80,121 +80,108 @@ export const codeMap = derived(([teams, codes]), ([teams, codes]) => {
   return newMap;
 });
 
-export const groupA = derived((teams), (teams) => {
-  let group = [];
+export const groupA = writable([
+  "Qatar",
+  "Ecuador",
+  "Senegal",
+  "Netherlands",
+]);
+export const groupB = writable([
+  "England",
+  "Iran",
+  "USA",
+  "WAL/UKR/SCO",
+]);
+export const groupC = writable([
+  "Argentina",
+  "Saudi Arabia",
+  "Mexico",
+  "Poland",
+]);
+export const groupD = writable([
+  "France",
+  "AUS/UAE/PER",
+  "Denmark",
+  "Tunisia",
+]);
+export const groupE = writable([
+  "Spain",
+  "CRC/NZ",
+  "Germany",
+  "Japan",
+]);
+export const groupF = writable([
+  "Belgium",
+  "Canada",
+  "Morocco",
+  "Croatia",
+]);
+export const groupG = writable([
+  "Brazil",
+  "Serbia",
+  "Switzerland",
+  "Cameroon",
+]);
+export const groupH = writable([
+  "Portugal",
+  "Ghana",
+  "Uruguay",
+  "South Korea",
+]);
 
-  for (let i = 0; i < 4; i++) {
-    group.push(teams[i]);
-  }
+export const groups = [
+  groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH
+];
 
-  return group;
-});
-
-export const groupB = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 4; i < 8; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupC = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 8; i < 12; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupD = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 12; i < 16; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupE = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 16; i < 20; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupF = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 20; i < 24; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupG = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 24; i < 28; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groupH = derived((teams), (teams) => {
-  let group = [];
-
-  for (let i = 28; i < 32; i++) {
-    group.push(teams[i]);
-  }
-
-  return group;
-});
-
-export const groups = derived(([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]), ([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]) => {
-  return [groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH];
-});
+export const matchWinners = writable([
+  "", // 49 0
+  "", // 50 1
+  "", // 51 2
+  "", // 52 3
+  "", // 53 4
+  "", // 54 5
+  "", // 55 6
+  "", // 56 7
+  "", // 57 8
+  "", // 58 9
+  "", // 59 10
+  "", // 60 11
+  "", // 61 12
+  "", // 62 13
+  "", // 63 14
+]);
 
 export const roundSixteen = derived(([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]), ([groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH]) => {
   return [
-    [groupA[0], groupB[1], "winner"],
-    [groupC[0], groupD[1], "winner"],
-    [groupD[0], groupC[1], "winner"],
-    [groupB[0], groupA[1], "winner"],
-    [groupE[0], groupF[1], "winner"],
-    [groupG[0], groupH[1], "winner"],
-    [groupF[0], groupE[1], "winner"],
-    [groupH[1], groupG[1], "winner"]
+    [groupA[0], groupB[1]],
+    [groupC[0], groupD[1]],
+    [groupD[0], groupC[1]],
+    [groupB[0], groupA[1]],
+    [groupE[0], groupF[1]],
+    [groupG[0], groupH[1]],
+    [groupF[0], groupE[1]],
+    [groupH[1], groupG[1]]
   ];
 });
 
-export const quarterFinals = derived((roundSixteen), (roundSixteen) => {
+export const quarterFinals = derived((matchWinners), (matchWinners) => {
   return [
-    [roundSixteen[4][2], roundSixteen[5][2], "winner"],
-    [roundSixteen[0][2], roundSixteen[1][2], "winner"],
-    [roundSixteen[6][2], roundSixteen[7][2], "winner"],
-    [roundSixteen[2][2], roundSixteen[3][2], "winner"]
+    [matchWinners[4], matchWinners[5]],
+    [matchWinners[0], matchWinners[1]],
+    [matchWinners[6], matchWinners[7]],
+    [matchWinners[2], matchWinners[3]]
   ];
 });
 
-export const semiFinals = derived((quarterFinals), (quarterFinals) => {
+export const semiFinals = derived((matchWinners), (matchWinners) => {
   return [
-    [quarterFinals[1][2], quarterFinals[0][2], "winner"],
-    [quarterFinals[3][2], quarterFinals[2][2], "winner"]
+    [matchWinners[8], matchWinners[9]],
+    [matchWinners[10], matchWinners[11]]
   ];
 });
 
-export const finalMatch = derived((semiFinals), (semiFinals) => {
-  return [semiFinals[0][2], semiFinals[1][2]];
+export const finalMatch = derived((matchWinners), (matchWinners) => {
+  return [matchWinners[12], matchWinners[13]];
 });
 
 export const matches = derived(([roundSixteen, quarterFinals, semiFinals, finalMatch]), ([roundSixteen, quarterFinals, semiFinals, finalMatch]) => {
@@ -213,7 +200,7 @@ export const matches = derived(([roundSixteen, quarterFinals, semiFinals, finalM
     "quarterFinals[3]": quarterFinals[3],
     "semiFinals[0]": semiFinals[0],
     "semiFinals[1]": semiFinals[1],
-    "finalMatch[0]": finalMatch[0]
+    "finalMatch[0]": finalMatch
   }
 });
 
