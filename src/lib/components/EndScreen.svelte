@@ -1,5 +1,7 @@
 <script>
   import { codeMap, matchWinners } from "$lib/stores";
+  import Button from "./Button.svelte";
+  import IconButton from "./IconButton.svelte";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
 </script>
@@ -24,12 +26,19 @@
   />
 {/if}
 <h1>{$matchWinners[$matchWinners.length - 1]}</h1>
+<Button text="See full prediction" />
+<br />
+<IconButton text="Share your prediction" type="share" accent={true} />
 
 <style>
   img {
-    margin: 2rem;
+    margin: 3rem;
   }
   h1 {
-    font-size: var(--font-size-1);
+    margin-bottom: 5rem;
+    color: var(--color);
+    font-size: 4rem;
+    text-align: center;
+    line-height: 100%;
   }
 </style>
