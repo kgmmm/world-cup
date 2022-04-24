@@ -1,5 +1,3 @@
-import { groups } from "./stores";
-
 const testCases = [1234, 1243, 1423, 4123, 1324, 1342, 1432, 4132, 3124, 3142, 3412, 4312, 2134, 2143, 2413, 4213, 2314, 2341, 2431, 4231, 3214, 3241, 3421, 4321];
 
 export function encode(groups, matchWinners) {
@@ -149,7 +147,7 @@ export function decode(shareCode) {
 
   let newGroups = [];
 
-  groups.forEach((group, i) => {
+  groupBase.forEach((group, i) => {
     let testCase = newTestCases[i].toString().split("");
 
     let newGroup = [];
