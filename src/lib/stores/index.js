@@ -160,7 +160,7 @@ export const roundSixteen = derived(([groupA, groupB, groupC, groupD, groupE, gr
     [groupE[0][0], groupF[1][0]],
     [groupG[0][0], groupH[1][0]],
     [groupF[0][0], groupE[1][0]],
-    [groupH[1][0], groupG[1][0]]
+    [groupH[0][0], groupG[1][0]]
   ];
 });
 
