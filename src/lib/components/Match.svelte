@@ -5,6 +5,14 @@
 
   $: teamOneCode = $codeMap.get(teams[0]).toLowerCase();
   $: teamTwoCode = $codeMap.get(teams[1]).toLowerCase();
+
+  function setWinner(team) {
+    $matchWinners[$progress[1] - 9] = team;
+
+    for (let i = $progress[1] - 8; i < $matchWinners.length; i++) {
+      $matchWinners[i] = "";
+    }
+  }
 </script>
 
 <div>
@@ -14,12 +22,7 @@
     name="match"
     checked={$matchWinners[$progress[1] - 9] === teams[0]}
   />
-  <label
-    for="teamOne"
-    on:click={() => {
-      $matchWinners[$progress[1] - 9] = teams[0];
-    }}
-  >
+  <label for="teamOne" on:click={() => setWinner(teams[0])}>
     {#if teamOneCode === "tbd"}
       <img
         src={`https://flagcdn.com/60x45/eu.png`}
@@ -48,12 +51,7 @@
     name="match"
     checked={$matchWinners[$progress[1] - 9] === teams[1]}
   />
-  <label
-    for="teamTwo"
-    on:click={() => {
-      $matchWinners[$progress[1] - 9] = teams[1];
-    }}
-  >
+  <label for="teamTwo" on:click={() => setWinner(teams[1])}>
     {#if teamTwoCode === "tbd"}
       <img
         src={`https://flagcdn.com/60x45/eu.png`}
