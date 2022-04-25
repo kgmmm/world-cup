@@ -65,13 +65,11 @@ export function encode(groups, matchWinners) {
 
   let binary = binFur + binTre + binTwo + binOne + "10";
 
-  let splitBin = binary.match(/.{1,8}/g).join(" ");
+  let hex = parseInt(binary, 2).toString(16);
 
-  let binToLetters = splitBin.split(" ").map(bin => String.fromCharCode(parseInt(bin, 2))).join("");
-
-  encoded += binToLetters;
+  encoded += hex;
     
-  return (encodeURIComponent(encoded));
+  return encoded;
 }
 
 const groupA = [
@@ -128,10 +126,8 @@ const groupBase = [
 
 export function decode(shareCode) {
   let decoded = [];
-
-  let noURI = decodeURIComponent(shareCode);
   
-  let groupPart = noURI.substring(0, 8);
+  let groupPart = shareCode.substring(0, 8);
 
   let testCaseIndexList = [];
 
@@ -173,20 +169,14 @@ export function decode(shareCode) {
     newGroups[7][0][0], newGroups[6][1][0]
   ];
 
-  let matchesPart = noURI.substring(8);
+  let matchesPart = shareCode.substring(8);
 
-  let toBin = matchesPart.split("").map(c => c.charCodeAt(0).toString(2));
+  let toBin = parseInt(matchesPart, 16).toString(2).padStart(32, "0");
 
-  toBin.forEach((byte, i) => {
-    if(byte.length === 8) return false;
-    
-    toBin[i] = byte.padStart(8, "0");
-  });
-
-  let sixteenResults = toBin.join("").substring(0, 16).split("");
-  let quarterResults = toBin.join("").substring(16, 24).split("");
-  let semiResults = toBin.join("").substring(24, 28).split("");
-  let finalResult = toBin.join("").substring(28, 30).split("");
+  let sixteenResults = toBin.substring(0, 16).split("");
+  let quarterResults = toBin.substring(16, 24).split("");
+  let semiResults = toBin.substring(24, 28).split("");
+  let finalResult = toBin.substring(28, 30).split("");
 
   let sixteenWinners = [];
 
