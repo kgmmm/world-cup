@@ -1,9 +1,28 @@
 <script>
-  import { codeMap, matchWinners, progress } from "$lib/stores";
+  import {
+    codeMap,
+    groupA,
+    groupB,
+    groupC,
+    groupD,
+    groupE,
+    groupF,
+    groupG,
+    groupH,
+    matchWinners,
+    progress,
+  } from "$lib/stores";
   import Button from "./Button.svelte";
   import IconButton from "./IconButton.svelte";
+  import { encode } from "$lib/share";
+  import { goto } from "$app/navigation";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
+
+  $: shareCode = encode(
+    [$groupA, $groupB, $groupC, $groupD, $groupE, $groupF, $groupG, $groupH],
+    $matchWinners
+  );
 </script>
 
 {#if code === "tbd"}
@@ -26,7 +45,7 @@
   />
 {/if}
 <h1>{$matchWinners[$matchWinners.length - 1]}</h1>
-<Button text="See full prediction" />
+<Button text="See full prediction" on:Click={() => goto(`/${shareCode}`)} />
 <br />
 <IconButton text="Share your prediction" type="share" accent={true} />
 <br />
@@ -36,12 +55,15 @@
   img {
     margin: 3rem;
     margin-top: 2rem;
+    margin-bottom: 0;
   }
   h1 {
-    margin-bottom: 3.5rem;
+    min-height: 12rem;
     color: var(--color);
     font-size: 4rem;
     text-align: center;
     line-height: 100%;
+    display: grid;
+    place-items: center;
   }
 </style>
