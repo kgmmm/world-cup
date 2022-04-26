@@ -114,7 +114,7 @@
 
   h1 {
     margin-top: 2rem;
-    font-size: var(--font-size-1);
+    font-size: var(--font-size-2);
     min-height: calc(var(--font-size-1) * 2);
     text-align: center;
   }
