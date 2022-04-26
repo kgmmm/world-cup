@@ -1,26 +1,33 @@
 <script>
   import { get } from "svelte/store";
   import { codeMap, progress, groups, matchWinners } from "$lib/stores";
+  import { dndzone } from "svelte-dnd-action";
   import { flip } from "svelte/animate";
   import { fly } from "svelte/transition";
 
   $: teams = get(groups[$progress[1] - 1]);
 
-  let hovering;
+  $: items = [
+    { id: 1, title: teams[0][0] },
+    { id: 2, title: teams[1][0] },
+    { id: 3, title: teams[2][0] },
+    { id: 4, title: teams[3][0] },
+  ];
 
-  function drop(event, target) {
-    event.dataTransfer.dropEffect = "move";
-    const start = parseInt(event.dataTransfer.getData("text/plain"));
-    const newTracklist = teams;
+  const flipDurationMs = 200;
 
-    if (start < target) {
-      newTracklist.splice(target + 1, 0, newTracklist[start]);
-      newTracklist.splice(start, 1);
-    } else {
-      newTracklist.splice(target, 0, newTracklist[start]);
-      newTracklist.splice(start + 1, 1);
-    }
-    groups[$progress[1] - 1].set(newTracklist);
+  function handleSort(e) {
+    items = e.detail.items;
+  }
+
+  function handleFinal(e) {
+    items = e.detail.items;
+    groups[$progress[1] - 1].set([
+      [e.detail.items[0].title, e.detail.items[0].id],
+      [e.detail.items[1].title, e.detail.items[1].id],
+      [e.detail.items[2].title, e.detail.items[2].id],
+      [e.detail.items[3].title, e.detail.items[3].id],
+    ]);
     matchWinners.set([
       "",
       "",
@@ -38,30 +45,18 @@
       "",
       "",
     ]);
-    hovering = null;
-  }
-
-  function dragStart(event, i) {
-    event.dataTransfer.effectAllowed = "move";
-    event.dataTransfer.dropEffect = "move";
-    const start = i;
-    event.dataTransfer.setData("text/plain", start);
   }
 </script>
 
-<ul in:fly={{ x: 50, duration: 300 }}>
-  {#each teams as team, index (team)}
-    {@const code = $codeMap.get(team[0]).toLowerCase()}
-    <li
-      animate:flip={{ duration: 300 }}
-      draggable={true}
-      class:is-active={hovering === index}
-      on:dragstart={(event) => dragStart(event, index)}
-      on:drop|preventDefault={(event) => drop(event, index)}
-      ondragover="return false"
-      on:dragenter={() => (hovering = index)}
-      on:dragend={() => (hovering = null)}
-    >
+<section
+  in:fly={{ x: 50, duration: 300 }}
+  use:dndzone={{ items, flipDurationMs }}
+  on:consider={handleSort}
+  on:finalize={handleFinal}
+>
+  {#each items as team, index (team)}
+    {@const code = $codeMap.get(team.title).toLowerCase()}
+    <div animate:flip={{ duration: flipDurationMs }}>
       {#if code === "tbd"}
         <img
           src={`https://flagcdn.com/60x45/eu.png`}
@@ -69,7 +64,7 @@
             https://flagcdn.com/180x135/eu.png 3x`}
           width="60"
           height="45"
-          alt={team[0]}
+          alt={team.title}
         />
       {:else}
         <img
@@ -78,27 +73,26 @@
             https://flagcdn.com/180x135/${code}.png 3x`}
           width="60"
           height="45"
-          alt={team[0]}
+          alt={team.title}
         />
       {/if}
-      <p>{team[0]}</p>
-    </li>
+      <p>{team.title}</p>
+    </div>
   {/each}
-</ul>
+</section>
 
 <style>
-  ul {
+  section {
     margin: 1rem 0.5rem;
     padding: 0;
     width: 300px;
-    list-style-type: none;
     border: solid 1px var(--border);
     border-radius: 3px;
     box-shadow: var(--shadow-large);
     overflow: hidden;
   }
 
-  li {
+  div {
     padding: 1rem 0.5rem;
     border-bottom: solid 1px var(--border);
     background: var(--background);
@@ -111,29 +105,24 @@
     cursor: pointer;
     position: relative;
   }
-  li:last-of-type {
+  div:last-of-type {
     border: none;
   }
-  li:nth-child(1) {
+  div:nth-child(1) {
     background: var(--group-first);
   }
-  li:nth-child(2) {
+  div:nth-child(2) {
     background: var(--group-second);
   }
 
-  li.is-active {
-    color: var(--background);
-    background: var(--accent);
-  }
-
-  li img {
+  div img {
     place-self: center;
     pointer-events: none;
     width: auto;
     height: var(--font-size-2);
   }
 
-  li p {
+  div p {
     padding-left: 0.5rem;
   }
 </style>
