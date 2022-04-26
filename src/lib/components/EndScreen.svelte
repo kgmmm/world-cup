@@ -16,6 +16,8 @@
   import IconButton from "./IconButton.svelte";
   import { encode } from "$lib/share";
   import ShareButton from "./ShareButton.svelte";
+  import { scale, fly } from "svelte/transition";
+  import { elasticOut } from "svelte/easing";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
 
@@ -44,12 +46,20 @@
     alt={$matchWinners[$matchWinners.length - 1]}
   />
 {/if}
-<h1>{$matchWinners[$matchWinners.length - 1]}</h1>
-<LinkButton text="See full prediction" href={`/${shareCode}`} />
+<h1 in:scale={{ duration: 550, easing: elasticOut }}>
+  {$matchWinners[$matchWinners.length - 1]}
+</h1>
+<div in:fly={{ y: 20, duration: 250, delay: 350 }}>
+  <LinkButton text="See full prediction" href={`/${shareCode}`} />
+</div>
 <br />
-<ShareButton />
+<div in:fly={{ y: 20, duration: 250, delay: 450 }}>
+  <ShareButton />
+</div>
 <br />
-<IconButton type="restart" on:click={() => ($progress[1] = 0)} />
+<div in:fly={{ y: 20, duration: 250, delay: 550 }}>
+  <IconButton type="restart" on:click={() => ($progress[1] = 0)} />
+</div>
 
 <style>
   img {
@@ -65,5 +75,10 @@
     line-height: 100%;
     display: grid;
     place-items: center;
+  }
+  div {
+    display: grid;
+    place-items: center;
+    place-self: center;
   }
 </style>

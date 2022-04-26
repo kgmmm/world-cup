@@ -1,5 +1,6 @@
 <script>
   import { onDestroy } from "svelte";
+  import { fly } from "svelte/transition";
 
   let copied = false;
 
@@ -34,7 +35,9 @@
   </svg>
   Share prediction
   {#if copied === true}
-    <p>Copied to clipboard</p>
+    <p in:fly={{ y: 50, duration: 150 }} out:fly={{ y: 50, duration: 200 }}>
+      Copied to clipboard
+    </p>
   {/if}
 </button>
 

@@ -2,6 +2,7 @@
   import { get } from "svelte/store";
   import { codeMap, progress, groups, matchWinners } from "$lib/stores";
   import { flip } from "svelte/animate";
+  import { fly } from "svelte/transition";
 
   $: teams = get(groups[$progress[1] - 1]);
 
@@ -48,7 +49,7 @@
   }
 </script>
 
-<ul>
+<ul in:fly={{ x: 50, duration: 300 }}>
   {#each teams as team, index (team)}
     {@const code = $codeMap.get(team[0]).toLowerCase()}
     <li

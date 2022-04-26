@@ -1,6 +1,7 @@
 <script>
   import { progress, matchWinners } from "$lib/stores";
   import IconButton from "./IconButton.svelte";
+  import { fly } from "svelte/transition";
 
   function stepForward() {
     $progress[1] = $progress[1] + 1;
@@ -10,7 +11,7 @@
   }
 </script>
 
-<div>
+<div in:fly={{ y: 20, duration: 250 }}>
   <IconButton type="leftArrow" on:click={stepBackward} />
   <IconButton
     type="rightArrow"

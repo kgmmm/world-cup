@@ -1,5 +1,6 @@
 <script>
   import { codeMap, progress, matches, matchWinners } from "$lib/stores";
+  import { fly } from "svelte/transition";
 
   $: teams = $matches[$progress[0][$progress[1]]];
 
@@ -15,7 +16,7 @@
   }
 </script>
 
-<div>
+<div in:fly={{ x: 50, duration: 300 }}>
   <input
     type="radio"
     id="teamOne"
