@@ -16,9 +16,129 @@
 </script>
 
 <script>
+  import Button from "$lib/components/Button.svelte";
+  import DeadGroup from "$lib/components/DeadGroup.svelte";
+  import DeadMatch from "$lib/components/DeadMatch.svelte";
+  import IconButton from "$lib/components/IconButton.svelte";
+
   export let groups = [];
   export let matchWinners = [];
 
-  $: console.log(groups);
-  $: console.log(matchWinners);
+  let finalWinner = matchWinners[14];
+
+  let finalMatch = [[matchWinners[12], matchWinners[13]]];
+
+  let semiFinals = [
+    [matchWinners[8], matchWinners[9]],
+    [matchWinners[10], matchWinners[11]],
+  ];
+
+  let quarterFinals = [
+    [matchWinners[4], matchWinners[5]],
+    [matchWinners[0], matchWinners[1]],
+    [matchWinners[6], matchWinners[7]],
+    [matchWinners[2], matchWinners[3]],
+  ];
+
+  let roundSixteen = [
+    [groups[0][0][0], groups[1][1][0]],
+    [groups[2][0][0], groups[3][1][0]],
+    [groups[3][0][0], groups[2][1][0]],
+    [groups[1][0][0], groups[0][1][0]],
+    [groups[4][0][0], groups[5][1][0]],
+    [groups[6][0][0], groups[7][1][0]],
+    [groups[5][0][0], groups[4][1][0]],
+    [groups[7][0][0], groups[6][1][0]],
+  ];
 </script>
+
+<main>
+  <h1>Group Stage</h1>
+  <section class="groups">
+    {#each groups as group, index}
+      {@const letter = String.fromCharCode(97 + index)}
+      <div class="group">
+        <h2>Group {letter}</h2>
+        <DeadGroup teams={group} />
+      </div>
+    {/each}
+  </section>
+
+  <h1>Round of Sixteen</h1>
+  <section class="roundSixteen">
+    {#each roundSixteen as match, index}
+      {@const winner = matchWinners[index]}
+      <DeadMatch teams={match} {winner} />
+    {/each}
+  </section>
+
+  <h1>Quarter Finals</h1>
+  <section class="quarters">
+    {#each quarterFinals as match, index}
+      {@const winner = matchWinners[index + 8]}
+      <DeadMatch teams={match} {winner} />
+    {/each}
+  </section>
+
+  <h1>Semi Finals</h1>
+  <section class="semis">
+    {#each semiFinals as match, index}
+      {@const winner = matchWinners[index + 12]}
+      <DeadMatch teams={match} {winner} />
+    {/each}
+  </section>
+
+  <h1>Final</h1>
+  <section class="final">
+    {#each finalMatch as match, index}
+      {@const winner = matchWinners[index + 14]}
+      <DeadMatch teams={match} {winner} />
+    {/each}
+  </section>
+
+  <section class="cta">
+    <IconButton text="Share prediction" type="share" accent={true} />
+    <br />
+    <p>Think you know better?</p>
+    <Button text="Make a prediction" type="cta" />
+  </section>
+</main>
+
+<style>
+  main {
+    margin: 0 auto;
+    padding: 0rem 1rem;
+    width: 100%;
+    max-width: calc(316px * 4 + 2rem);
+  }
+
+  h1 {
+    margin-top: 2rem;
+    font-size: var(--font-size-1);
+    min-height: calc(var(--font-size-1) * 2);
+    text-align: center;
+  }
+
+  h2 {
+    text-transform: capitalize;
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  section.cta {
+    margin: 4rem auto;
+    display: grid;
+    place-items: center;
+  }
+
+  div.group h2 {
+    margin-left: 1rem;
+    font-weight: 400;
+    line-height: 100%;
+    color: var(--color);
+    opacity: 50%;
+  }
+</style>
