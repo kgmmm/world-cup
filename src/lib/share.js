@@ -82,7 +82,10 @@ const groupB = [
   ["England", 1],
   ["Iran", 2],
   ["USA", 3],
-  ["WAL/UKR/SCO", 4],
+  ["WAL / UKR / SCO", 4],
+//["Wales", 4],
+//["Ukraine", 4],
+//["Scotland", 4],
 ];
 const groupC = [
   ["Argentina", 1],
@@ -92,13 +95,18 @@ const groupC = [
 ];
 const groupD = [
   ["France", 1],
-  ["AUS/UAE/PER", 2],
+  ["AUS / UAE / PER", 2],
+//["Australia", 2],
+//["UAE", 2],
+//["Peru", 2],
   ["Denmark", 3],
   ["Tunisia", 4],
 ];
 const groupE = [
   ["Spain", 1],
   ["CRC/NZ", 2],
+//["Costa Rica", 2],
+//["New Zealand", 2],
   ["Germany", 3],
   ["Japan", 4],
 ];
