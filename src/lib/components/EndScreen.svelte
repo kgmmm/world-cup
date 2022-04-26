@@ -18,6 +18,7 @@
   import ShareButton from "./ShareButton.svelte";
   import { scale, fly } from "svelte/transition";
   import { elasticOut } from "svelte/easing";
+  import { ConfettiExplosion } from "svelte-confetti-explosion";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
 
@@ -27,6 +28,7 @@
   );
 </script>
 
+<ConfettiExplosion />
 {#if code === "tbd"}
   <img
     src={`https://flagcdn.com/60x45/eu.png`}
