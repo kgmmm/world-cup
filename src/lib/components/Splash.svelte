@@ -14,8 +14,7 @@
   }
 
   img {
-    width: 100%;
-    max-width: 425px;
+    width: 300px;
     margin-bottom: 2rem;
   }
 </style>

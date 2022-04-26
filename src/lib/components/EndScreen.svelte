@@ -54,11 +54,9 @@
 <div in:fly={{ y: 20, duration: 250, delay: 350 }}>
   <LinkButton text="See full prediction" href={`/${shareCode}`} />
 </div>
-<br />
 <div in:fly={{ y: 20, duration: 250, delay: 450 }}>
-  <ShareButton />
+  <ShareButton {shareCode} />
 </div>
-<br />
 <div in:fly={{ y: 20, duration: 250, delay: 550 }}>
   <IconButton type="restart" on:click={() => ($progress[1] = 0)} />
 </div>
@@ -79,6 +77,7 @@
     place-items: center;
   }
   div {
+    margin-bottom: 1rem;
     display: grid;
     place-items: center;
     place-self: center;

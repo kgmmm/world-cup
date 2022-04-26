@@ -98,7 +98,6 @@
 
   <section class="cta">
     <ShareButton />
-    <br />
     <p>Think you know better?</p>
     <LinkButton text="Make a prediction" type="cta" href="/" reload={true} />
   </section>
@@ -132,6 +131,9 @@
     margin: 4rem auto;
     display: grid;
     place-items: center;
+  }
+  section.cta p {
+    margin-top: 1rem;
   }
 
   div.group h2 {

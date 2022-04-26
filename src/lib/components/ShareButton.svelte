@@ -2,12 +2,14 @@
   import { onDestroy } from "svelte";
   import { fly } from "svelte/transition";
 
+  export let shareCode = "";
+
   let copied = false;
 
   let clipboardTimer;
 
   function handleClick() {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(window.location.href + shareCode);
     copied = true;
     if (clipboardTimer) clearTimeout(clipboardTimer);
     clipboardTimer = setTimeout(() => {

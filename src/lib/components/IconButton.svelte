@@ -72,8 +72,7 @@
 
 <style>
   button {
-    width: auto;
-    min-width: 50px;
+    width: 50px;
     height: 50px;
     color: var(--color);
     background: var(--background);
@@ -83,7 +82,7 @@
     line-height: 100%;
     border-radius: 50vw;
     display: grid;
-    place-items: center;
+    place-content: center;
     cursor: pointer;
   }
   button:hover {
@@ -98,6 +97,8 @@
   }
 
   button.text {
+    width: auto;
+    min-width: 50px;
     padding-inline: var(--font-size-4);
     grid-template-columns: auto 1fr;
     gap: var(--font-size-5);
