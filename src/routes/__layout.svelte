@@ -22,5 +22,8 @@
     display: grid;
     place-items: center;
     grid-template-rows: auto 1fr auto;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
   }
 </style>
