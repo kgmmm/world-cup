@@ -12,10 +12,9 @@
     matchWinners,
     progress,
   } from "$lib/stores";
-  import Button from "./Button.svelte";
+  import LinkButton from "./LinkButton.svelte";
   import IconButton from "./IconButton.svelte";
   import { encode } from "$lib/share";
-  import { goto } from "$app/navigation";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
 
@@ -45,7 +44,7 @@
   />
 {/if}
 <h1>{$matchWinners[$matchWinners.length - 1]}</h1>
-<Button text="See full prediction" on:Click={() => goto(`/${shareCode}`)} />
+<LinkButton text="See full prediction" href={`/${shareCode}`} />
 <br />
 <IconButton text="Share your prediction" type="share" accent={true} />
 <br />

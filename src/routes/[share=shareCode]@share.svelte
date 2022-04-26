@@ -16,7 +16,7 @@
 </script>
 
 <script>
-  import Button from "$lib/components/Button.svelte";
+  import LinkButton from "$lib/components/LinkButton.svelte";
   import DeadGroup from "$lib/components/DeadGroup.svelte";
   import DeadMatch from "$lib/components/DeadMatch.svelte";
   import IconButton from "$lib/components/IconButton.svelte";
@@ -100,7 +100,7 @@
     <IconButton text="Share prediction" type="share" accent={true} />
     <br />
     <p>Think you know better?</p>
-    <Button text="Make a prediction" type="cta" />
+    <LinkButton text="Make a prediction" type="cta" href="/" reload={true} />
   </section>
 </main>
 
