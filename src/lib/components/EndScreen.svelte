@@ -15,6 +15,7 @@
   import LinkButton from "./LinkButton.svelte";
   import IconButton from "./IconButton.svelte";
   import { encode } from "$lib/share";
+  import ShareButton from "./ShareButton.svelte";
 
   $: code = $codeMap.get($matchWinners[$matchWinners.length - 1]).toLowerCase();
 
@@ -46,7 +47,7 @@
 <h1>{$matchWinners[$matchWinners.length - 1]}</h1>
 <LinkButton text="See full prediction" href={`/${shareCode}`} />
 <br />
-<IconButton text="Share your prediction" type="share" accent={true} />
+<ShareButton />
 <br />
 <IconButton type="restart" on:click={() => ($progress[1] = 0)} />
 

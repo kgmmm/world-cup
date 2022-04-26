@@ -19,7 +19,7 @@
   import LinkButton from "$lib/components/LinkButton.svelte";
   import DeadGroup from "$lib/components/DeadGroup.svelte";
   import DeadMatch from "$lib/components/DeadMatch.svelte";
-  import IconButton from "$lib/components/IconButton.svelte";
+  import ShareButton from "$lib/components/ShareButton.svelte";
 
   export let groups = [];
   export let matchWinners = [];
@@ -97,7 +97,7 @@
   </section>
 
   <section class="cta">
-    <IconButton text="Share prediction" type="share" accent={true} />
+    <ShareButton />
     <br />
     <p>Think you know better?</p>
     <LinkButton text="Make a prediction" type="cta" href="/" reload={true} />
