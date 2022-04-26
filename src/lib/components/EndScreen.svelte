@@ -48,7 +48,7 @@
 <br />
 <IconButton text="Share your prediction" type="share" accent={true} />
 <br />
-<IconButton type="restart" on:Click={() => ($progress[1] = 0)} />
+<IconButton type="restart" on:click={() => ($progress[1] = 0)} />
 
 <style>
   img {

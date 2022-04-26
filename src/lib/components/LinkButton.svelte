@@ -1,24 +1,16 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-
-  const dispatch = createEventDispatcher();
-
   export let type = "normal";
   export let text = "Button";
   export let href = "";
   export let reload = false;
-
-  function handleClick() {
-    dispatch("Click");
-  }
 </script>
 
 {#if reload}
-  <a {href} sveltekit:reload class={type} on:click={handleClick}>
+  <a {href} sveltekit:reload class={type} on:click>
     {text}
   </a>
 {:else}
-  <a {href} sveltekit:prefetch class={type} on:click={handleClick}>
+  <a {href} sveltekit:prefetch class={type} on:click>
     {text}
   </a>
 {/if}

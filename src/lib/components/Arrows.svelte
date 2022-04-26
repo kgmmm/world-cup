@@ -11,11 +11,11 @@
 </script>
 
 <div>
-  <IconButton type="leftArrow" on:Click={stepBackward} />
+  <IconButton type="leftArrow" on:click={stepBackward} />
   <IconButton
     type="rightArrow"
     accent={true}
-    on:Click={stepForward}
+    on:click={stepForward}
     disabled={$progress[1] > 8 &&
       $progress[1] !== $progress[0].length &&
       $matchWinners[$progress[1] - 9] === ""}

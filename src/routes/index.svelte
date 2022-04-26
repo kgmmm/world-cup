@@ -14,7 +14,7 @@
 </script>
 
 {#if $progress[1] === 0}
-  <Splash on:Click={stepForward} />
+  <Splash on:click={stepForward} />
 {:else if $progress[1] > 0 && $progress[1] <= 8}
   <p>Drag and drop the teams in the order you think the group will finish.</p>
   <Group />

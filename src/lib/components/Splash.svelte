@@ -4,7 +4,7 @@
 
 <div>
   <img src="/qatar.svg" alt="World Cup Qatar 2022 logo" />
-  <Button type="cta" text="Get Started" on:Click />
+  <Button type="cta" text="Get Started" on:click />
 </div>
 
 <style>
