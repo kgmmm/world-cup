@@ -92,8 +92,7 @@
     display: none;
   }
   input[type="radio"]:checked + label {
-    color: var(--background);
-    background: var(--accent);
+    background: var(--group-first);
   }
 
   label {
