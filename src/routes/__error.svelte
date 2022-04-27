@@ -3,7 +3,6 @@
     return {
       props: {
         status,
-        error,
         message: error.message,
       },
     };
@@ -14,14 +13,18 @@
   import LinkButton from "$lib/components/LinkButton.svelte";
 
   export let status;
-  export let error;
   export let message;
 </script>
 
 <div>
   <h1>{status}</h1>
   <p>{message}</p>
-  <h5>Seems like that share code was invalid</h5>
+
+  {#if status === 404}
+    <h5>Seems like that share code was invalid</h5>
+  {:else if status === 500}
+    <h5>Somethings a bit wrong on our end</h5>
+  {/if}
 
   <LinkButton text="Back to safety" href="/" />
 </div>
