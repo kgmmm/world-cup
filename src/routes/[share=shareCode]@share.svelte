@@ -20,6 +20,7 @@
   import DeadGroup from "$lib/components/DeadGroup.svelte";
   import DeadMatch from "$lib/components/DeadMatch.svelte";
   import ShareButton from "$lib/components/ShareButton.svelte";
+  import { codeMap } from "$lib/stores";
 
   export let groups = [];
   export let matchWinners = [];
@@ -51,6 +52,26 @@
     [groups[7][0][0], groups[6][1][0]],
   ];
 </script>
+
+<svelte:head>
+  <title>World Cup Prediction</title>
+
+  <meta property="og:title" content="World Cup Prediction" />
+  <meta name="description" content="See the full World Cup prediction!" />
+  <meta
+    property="og:description"
+    content="See the full World Cup prediction!"
+  />
+
+  <meta
+    property="og:image"
+    content={`https://website.com/og/${$codeMap
+      .get(finalWinner)
+      .toLowerCase()}`}
+  />
+  <!-- TODO: change this url upon deployment -->
+  <meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
 
 <main>
   <h1>Group Stage</h1>

@@ -13,6 +13,20 @@
   }
 </script>
 
+<svelte:head>
+  <title>World Cup Predictor</title>
+
+  <meta property="og:title" content="World Cup Predictor" />
+  <meta
+    name="description"
+    content="Make a prediction for the upcoming World Cup!"
+  />
+  <meta
+    property="og:description"
+    content="Make a prediction for the upcoming World Cup!"
+  />
+</svelte:head>
+
 {#if $progress[1] === 0}
   <Splash on:click={stepForward} />
 {:else if $progress[1] > 0 && $progress[1] <= 8}
