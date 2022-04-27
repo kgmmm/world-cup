@@ -65,11 +65,10 @@
 
   <meta
     property="og:image"
-    content={`https://website.com/og/${$codeMap
+    content={`https://wcpredictor.vercel.app/og/${$codeMap
       .get(finalWinner)
       .toLowerCase()}`}
   />
-  <!-- TODO: change this url upon deployment -->
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 

@@ -2,7 +2,7 @@
 
 Make and share your prediction for the World Cup Qatar 2022.
 
-<url>
+<https://wcpredictor.vercel.app/>
 
 - <https://flagpedia.net>
 - <https://icons.getbootstrap.com/>
