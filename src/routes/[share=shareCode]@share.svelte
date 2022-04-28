@@ -70,6 +70,12 @@
       .toLowerCase()}.png`}
   />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    property="twitter:image"
+    content={`https://wcpredictor.vercel.app/og/${$codeMap
+      .get(finalWinner)
+      .toLowerCase()}.png`}
+  />
 </svelte:head>
 
 <main>
