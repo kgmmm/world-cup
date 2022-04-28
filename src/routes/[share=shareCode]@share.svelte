@@ -67,7 +67,7 @@
     property="og:image"
     content={`https://wcpredictor.vercel.app/og/${$codeMap
       .get(finalWinner)
-      .toLowerCase()}`}
+      .toLowerCase()}.png`}
   />
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
