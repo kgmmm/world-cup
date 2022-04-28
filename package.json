@@ -19,6 +19,7 @@
   },
   "type": "module",
   "dependencies": {
+    "copy-to-clipboard-ultralight": "^1.0.14",
     "svelte-confetti-explosion": "^0.2.0",
     "svelte-dnd-action": "^0.9.18"
   }

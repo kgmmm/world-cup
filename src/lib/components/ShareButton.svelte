@@ -1,6 +1,7 @@
 <script>
   import { onDestroy } from "svelte";
   import { fly } from "svelte/transition";
+  import ultralightCopy from "copy-to-clipboard-ultralight";
 
   export let shareCode = "";
 
@@ -9,12 +10,33 @@
   let clipboardTimer;
 
   function handleClick() {
-    navigator.clipboard.writeText(window.location.href + shareCode);
-    copied = true;
-    if (clipboardTimer) clearTimeout(clipboardTimer);
-    clipboardTimer = setTimeout(() => {
-      copied = false;
-    }, 3000);
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(window.location.href + shareCode)
+        .then(function () {
+          copied = true;
+          if (clipboardTimer) clearTimeout(clipboardTimer);
+          clipboardTimer = setTimeout(() => {
+            copied = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      if (ultralightCopy(window.location.href + shareCode)) {
+        copied = true;
+        if (clipboardTimer) clearTimeout(clipboardTimer);
+        clipboardTimer = setTimeout(() => {
+          copied = false;
+        }, 3000);
+      } else {
+        prompt(
+          "Copy this link to share your prediction...",
+          window.location.href + shareCode
+        );
+      }
+    }
   }
 
   onDestroy(() => {
