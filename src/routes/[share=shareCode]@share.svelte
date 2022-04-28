@@ -76,6 +76,13 @@
       .get(finalWinner)
       .toLowerCase()}.png`}
   />
+
+  <meta name="twitter:creator" content="@_kgmmm" />
+  <meta name="twitter:title" content="World Cup Prediction" />
+  <meta
+    name="twitter:description"
+    content="See the full World Cup prediction! Think you know better? Make your own prediction!"
+  />
 </svelte:head>
 
 <main>
