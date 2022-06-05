@@ -82,8 +82,7 @@ const groupB = [
   ["England", 1],
   ["Iran", 2],
   ["USA", 3],
-  ["WAL / UKR / SCO", 4],
-//["Wales", 4],
+  ["Wales", 4],
 //["Ukraine", 4],
 //["Scotland", 4],
 ];
