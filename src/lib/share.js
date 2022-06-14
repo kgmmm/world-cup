@@ -83,8 +83,6 @@ const groupB = [
   ["Iran", 2],
   ["USA", 3],
   ["Wales", 4],
-//["Ukraine", 4],
-//["Scotland", 4],
 ];
 const groupC = [
   ["Argentina", 1],
@@ -94,10 +92,7 @@ const groupC = [
 ];
 const groupD = [
   ["France", 1],
-  ["AUS / UAE / PER", 2],
-//["Australia", 2],
-//["UAE", 2],
-//["Peru", 2],
+  ["Australia", 2],
   ["Denmark", 3],
   ["Tunisia", 4],
 ];
