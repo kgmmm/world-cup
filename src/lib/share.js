@@ -98,9 +98,7 @@ const groupD = [
 ];
 const groupE = [
   ["Spain", 1],
-  ["CRC/NZ", 2],
-//["Costa Rica", 2],
-//["New Zealand", 2],
+  ["Costa Rica", 2],
   ["Germany", 3],
   ["Japan", 4],
 ];

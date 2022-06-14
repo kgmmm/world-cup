@@ -18,9 +18,7 @@ export const teams = writable([
   "Denmark",
   "Tunisia",
   "Spain",
-  "CRC/NZ",
-//"Costa Rica",
-//"New Zealand",
+  "Costa Rica",
   "Germany",
   "Japan",
   "Belgium",
@@ -55,9 +53,7 @@ export const codes = writable([
   "DK",
   "TN",
   "ES",
-  "TBD",
-//"CR",
-//"NZ",
+  "CR",
   "DE",
   "JP",
   "BE",
@@ -110,9 +106,7 @@ export const groupD = writable([
 ]);
 export const groupE = writable([
   ["Spain", 1],
-  ["CRC/NZ", 2],
-//["Costa Rica", 2],
-//["New Zealand", 2],
+  ["Costa Rica", 2],
   ["Germany", 3],
   ["Japan", 4],
 ]);
